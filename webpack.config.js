@@ -8,7 +8,9 @@ var extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: './src/js/app.js',
+    entry: {
+        app: './src/js/app.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -45,18 +47,38 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: 'img/',
-                            publicPath: 'img/'
+                            publicPath: './'
                         }
                     }
                 ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]'
+                        }
+                    }
+                ],
+                exclude: path.resolve(__dirname, 'src/index.html')
             }
         ]
     },
     plugins: [
         extractPlugin,
         new HtmlWebpackPlugin({
+            filename: 'index.html',
             template: 'src/index.html'
         }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'users.html',
+        //     template: 'src/users.html',
+        //     // 定义需要注入的js模块 css等
+        //     // bundle.js就不会自动加入其中
+        //     chunks: []
+        // }),
         new CleanWebpackPlugin(['dist'])
     ]
 };
