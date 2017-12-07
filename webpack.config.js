@@ -2,6 +2,7 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var webpack = require('webpack');
 
 var extractPlugin = new ExtractTextPlugin({
    filename: 'main.css'
@@ -47,7 +48,7 @@ module.exports = {
                         options: {
                             name: '[name].[ext]',
                             outputPath: 'img/',
-                            publicPath: './'
+                            publicPath: 'img/'
                         }
                     }
                 ]
@@ -67,6 +68,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.ProvidePlugin({
+           $: 'jquery',
+           jQuery: 'jquery'
+        }),
         extractPlugin,
         new HtmlWebpackPlugin({
             filename: 'index.html',
