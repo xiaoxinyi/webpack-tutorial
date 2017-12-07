@@ -70,7 +70,8 @@ module.exports = {
         extractPlugin,
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'src/index.html'
+            template: 'src/index.html',
+            chunks: ['app']
         }),
         // new HtmlWebpackPlugin({
         //     filename: 'users.html',
