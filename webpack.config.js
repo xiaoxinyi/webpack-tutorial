@@ -17,7 +17,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        // 
+        // 相对index.html的路径
         // publicPath: '/dist'
     },
     module: {
