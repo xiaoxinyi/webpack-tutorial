@@ -8,10 +8,11 @@ module.exports = {
     // 定义js入口文件
     entry: './src/js/app.js',
     output: {
-        // 最后输出的路径
+        // 最后输出的路径 需要绝对路径
         path: path.resolve(__dirname, 'dist'),
         // 最后输出的整个js文件
         filename: 'bundle.js',
+        // where dev server
         publicPath: '/dist'
     },
     // 这里定义了webpack会怎样对待你的module
